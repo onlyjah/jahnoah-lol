@@ -1,0 +1,4 @@
+---
+import Base from '../../layouts/Base.astro';import {getCollection} from 'astro:content';const entries=(await getCollection('journal',({data})=>!data.draft)).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime());
+---
+<Base title="Journal — Jah Noah"><section class="page"><p class="eyebrow">Poetry · Photos · Music · Notes</p><h1>Journal.</h1><nav class="journal-filters" aria-label="Journal rooms"><a href="/Bloom">Bloom · Pastel / Music</a><a href="/Orbit">Orbit · Solarpunk / Hyperspace</a><a href="/Canopy">Canopy · Nature / Recovery</a></nav>{entries.map(p=><a class="journal-entry" href={`/Journal/${p.id}`}><span>{p.data.room} · {p.data.date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})} · Source excerpt</span><h2>{p.data.title}</h2></a>)}</section></Base>

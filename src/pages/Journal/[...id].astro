@@ -1,0 +1,4 @@
+---
+import Base from '../../layouts/Base.astro';import {getCollection,render} from 'astro:content';export async function getStaticPaths(){return (await getCollection('journal',({data})=>!data.draft)).map(post=>({params:{id:post.id},props:{post}}))};const {post}=Astro.props;const {Content}=await render(post);
+---
+<Base title={`${post.data.title} — Jah Noah`} theme={post.data.room.toLowerCase()}><article class="page prose"><a href={`/${post.data.room}`}>{post.data.room} room</a><p class="eyebrow">Jah Noah · {post.data.date.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'})} · Source excerpt</p><h1>{post.data.title}</h1><Content/><a href="/Journal">All journal entries</a></article></Base>

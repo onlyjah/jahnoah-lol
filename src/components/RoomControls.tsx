@@ -1,0 +1,2 @@
+import {useState,useEffect} from 'react';import {Button} from './ui/button';
+export default function RoomControls(){const [moving,setMoving]=useState(false);useEffect(()=>{setMoving(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)},[]);useEffect(()=>{document.documentElement.dataset.motion=moving?'on':'off'},[moving]);return <Button variant="outline" aria-pressed={moving} onClick={()=>setMoving(!moving)}>{moving?'Pause motion':'Enable motion'}</Button>}

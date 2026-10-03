@@ -1,0 +1,4 @@
+---
+import {getCollection} from 'astro:content';const {room}=Astro.props;const entries=(await getCollection('journal',({data})=>data.room===room&&!data.draft)).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime());
+---
+<section class="room-journal"><div class="section-heading"><h2>Journal</h2><a href="/Journal">All rooms</a></div>{entries.map(p=><a class="journal-entry" href={`/Journal/${p.id}`}><span>{p.data.date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})} · Source excerpt</span><h3>{p.data.title}</h3></a>)}</section>

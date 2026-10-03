@@ -1,0 +1,5 @@
+OpenMoji 16.0.0, unchanged artwork
+https://github.com/hfg-gmuend/openmoji/tree/16.0.0/color/svg
+Butterfly 1F98B; Frog 1F438; Flying saucer 1F6F8
+CC BY-SA 4.0
+https://openmoji.org
